@@ -1,5 +1,5 @@
 # **Traffic Sign Recognition** 
-
+---
 **Build a Traffic Sign Recognition Project**
 
 The goals / steps of this project are the following:
@@ -15,15 +15,15 @@ The goals / steps of this project are the following:
 
 [image1]: ./report_images/AfterNormColourImage.png "out1"
 [image2]: ./report_images/AfterNormColourValuesExample.png "out2"
-[image3]: ./report_images/Certainty of label for image 0.png "out3"
-[image4]: ./report_images/Certainty of label for image 1.png "out4"
-[image5]: ./report_images/Certainty of label for image 2.png "out5"
-[image6]: ./report_images/Certainty of label for image 3.png "out6"
-[image7]: ./report_images/Certainty of label for image 4.png "out7"
-[image8]: ./report_images/Certainty of label for image 5.png "out8"
-[image9]: ./report_images/Certainty of label for image 6.png "out9"
-[image10]: ./report_images/Certainty of label for image 7.png "out10"
-[image11]: ./report_images/Certainty of label for image 8.png "out11"
+[image3]: ./report_images/Certainty0.png "out3"
+[image4]: ./report_images/Certainty1.png "out4"
+[image5]: ./report_images/Certainty2.png "out5"
+[image6]: ./report_images/Certainty3.png "out6"
+[image7]: ./report_images/Certainty4.png "out7"
+[image8]: ./report_images/Certainty5.png "out8"
+[image9]: ./report_images/Certainty6.png "out9"
+[image10]: ./report_images/Certainty7.png "out10"
+[image11]: ./report_images/Certainty8.png "out11"
 [image12]: ./report_images/Extrapics.png "out12"
 [image13]: ./report_images/ImageExample.png "out13"
 [image14]: ./report_images/ImageLabels.png "out14"
@@ -33,10 +33,11 @@ The goals / steps of this project are the following:
 [image18]: ./report_images/TestExamples.png "out18"
 [image19]: ./report_images/TrainingExamples.png "out19"
 [image20]: ./report_images/ValidExamples.png "out20"
+
 ---
 
-## Rubric Points
-### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+### Rubric Points
+Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
 ### Contents
