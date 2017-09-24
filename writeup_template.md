@@ -40,6 +40,7 @@ Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/4
 
 ### Contents
 This submission includes:
+
 *The Traffic_Sign_Classifier.ipynb notebook file with all questions answered and all code cells executed and displaying output.
 *A HTML export of the project notebook with the name report.html.
 *Additional images used for the project that are not from the German Traffic Sign Dataset. Found in /data/Ready/
