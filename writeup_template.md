@@ -1,9 +1,4 @@
 #**Traffic Sign Recognition** 
-
-##Writeup Template
-
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
 ---
 
 **Build a Traffic Sign Recognition Project**
@@ -19,68 +14,73 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image1]: ./report_images/AfterNormColourImage.png "out1"
+[image2]: ./report_images/AfterNormColourValuesExample.png "out2"
+[image3]: ./report_images/Certainty of label for image 0.png "out3"
+[image4]: ./report_images/Certainty of label for image 1.png "out4"
+[image5]: ./report_images/Certainty of label for image 2.png "out5"
+[image6]: ./report_images/Certainty of label for image 3.png "out6"
+[image7]: ./report_images/Certainty of label for image 4.png "out7"
+[image8]: ./report_images/Certainty of label for image 5.png "out8"
+[image9]: ./report_images/Certainty of label for image 6.png "out9"
+[image10]: ./report_images/Certainty of label for image 7.png "out10"
+[image11]: ./report_images/Certainty of label for image 8.png "out11"
+[image12]: ./report_images/Extrapics.png "out12"
+[image13]: ./report_images/ImageExample.png "out13"
+[image14]: ./report_images/ImageLabels.png "out14"
+[image15]: ./report_images/incorrect.png "out15"
+[image16]: ./report_images/PreNormColourImage.png "out16"
+[image17]: ./report_images/PreNormColourValuesExample.png "out17"
+[image18]: ./report_images/TestExamples.png "out18"
+[image19]: ./report_images/TrainingExamples.png "out19"
+[image20]: ./report_images/ValidExamples.png "out20"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
-###Writeup / README
-
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
-
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+###Contents
+This submission includes:
+The Traffic_Sign_Classifier.ipynb notebook file with all questions answered and all code cells executed and displaying output.
+A HTML export of the project notebook with the name report.html.
+Additional images used for the project that are not from the German Traffic Sign Dataset. Found in /data/Ready/
+This writeup report (markdown file)
+Here is a link to my [project code](https://github.com/LachlanNXT/CarND-Traffic-Sign-Classifier-Project)
 
 ###Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
-
-I used the pandas library to calculate summary statistics of the traffic
+I used numpy to calculate summary statistics of the traffic
 signs data set:
 
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+* Number of training examples = 34799
+* Number of testing examples = 12630
+* Number of validation examples = 4410
+* Image data shape = (32, 32, 3)
+* Number of classes = 43
 
-####2. Include an exploratory visualization of the dataset.
+####2. Exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+The picture below from training set, has a corresponding label of 4, which means speed limit 70:
+![alt text][image13]
+The label matches the image so the data seems to have been imported correctly.
 
-![alt text][image1]
+![alt text][image18] ![alt text][image19] ![alt text][image20]
+
+We can see from the histograms above that the training, validation and test datasets have a similar distribution of image types.
 
 ###Design and Test a Model Architecture
 
-####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+####1. Preprocessing the image data.
 
-As a first step, I decided to convert the images to grayscale because ...
+I wanted to normalise the data first, so I converted the data tupe from 'uint8' to 'int16' so the pixel values could be negative. Then I applied the pixel = (pixel - 128)/ 128 operation. The following plots show an example of the colour distribution in an image before and after normalisation:
 
-Here is an example of a traffic sign image before and after grayscaling.
+![alt text][image17]![alt text][image2]
 
-![alt text][image2]
+I decided not to grayscale because colour is an important piece of information in some traffic signs.
 
-As a last step, I normalized the image data because ...
+I decided not to augment the dataset because the model seems to work fine without and due to time constraints.
 
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
-
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+####2. Final model architecture
 
 My final model consisted of the following layers:
 
