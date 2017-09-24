@@ -1,5 +1,5 @@
 # **Traffic Sign Recognition** 
----
+
 **Build a Traffic Sign Recognition Project**
 
 The goals / steps of this project are the following:
@@ -10,6 +10,7 @@ The goals / steps of this project are the following:
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
 
+---
 
 [//]: # (Image References)
 
@@ -34,12 +35,9 @@ The goals / steps of this project are the following:
 [image19]: ./report_images/TrainingExamples.png "out19"
 [image20]: ./report_images/ValidExamples.png "out20"
 
----
-
 ### Rubric Points
 Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
----
 ### Contents
 This submission includes:
 The Traffic_Sign_Classifier.ipynb notebook file with all questions answered and all code cells executed and displaying output.
@@ -81,23 +79,31 @@ I decided not to grayscale because colour is an important piece of information i
 
 I decided not to augment the dataset because the model seems to work fine without and due to time constraints.
 
-####2. Final model architecture
+#### 2. Final model architecture
 
 My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Convolution 3x3     	| 1x1 stride, valid padding, outputs 30x30x30 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
- 
-
+| Dropout					|					50%							|
+| Max pooling	      	| 2x2 stride, valid padding, outputs 15x15x30 				|
+| Convolution 3x3     	| 1x1 stride, valid padding, outputs 13x13x60 	|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride, valid padding, outputs 6x6x60 				|
+| Convolution 3x3     	| 1x1 stride, valid padding, outputs 4x4x120 	|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride, valid padding, outputs 2x2x120 				|
+| Flattening	    | output 2x2x120 = 480  									|
+| Fully connected		| input 480, output 120       									|
+| RELU					|												|
+| Fully connected		| input 120, output 84       									|
+| RELU					|												|
+| Fully connected		| input 84, output 43       									|
+| RELU					|												|
+| Softmax				| used for training        									|
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
