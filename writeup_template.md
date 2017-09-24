@@ -73,7 +73,7 @@ We can see from the histograms above that the training, validation and test data
 
 #### 1. Preprocessing the image data.
 
-I wanted to normalise the data first, so I converted the data tupe from 'uint8' to 'int16' so the pixel values could be negative. Then I applied the pixel = (pixel - 128)/ 128 operation. The following plots show an example of the colour distribution in an image before and after normalisation:
+I wanted to normalise the data first, so I converted the data type from 'uint8' to 'int16' so the pixel values could be negative. Then I applied the pixel = (pixel - 128)/ 128 operation. The following plots show an example of the colour distribution in an image before and after normalisation:
 
 ![alt text][image17]![alt text][image2]
 
@@ -157,8 +157,6 @@ This is an interesting result. The image is of a pedestrain sign, and the predic
 
 #### 3. Model certainty
 
-is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
 The following images show the top 5 softmax probabilities for classification of each of the downloaded images:
 
 ![alt text][image3] ![alt text][image4]
@@ -167,7 +165,63 @@ The following images show the top 5 softmax probabilities for classification of 
 ![alt text][image9] ![alt text][image10]
 ![alt text][image11]
 
-We can see from these plots that the model is totally sure of its prediction of all of these images. Even the image it classified incorrectly shows overwhelming certainty despite being slightly less certain than the other classifications., which it has some slight uncertainty. The corresponding sign types can be seen in the figure under section 2.
+| Image Number | Probabilities | Labels |
+image 0: | 1.00e+00   9.38e-16   4.09e-16   |1.16e-17   7.98e-20 | 0  1  8  4 18|
+image 1: | 1.00e+00   2.50e-14   5.15e-18   |2.72e-19   1.91e-22|  4  1 18  0  5|
+image 2: | 1.00e+00   1.43e-13   5.17e-15  | 1.09e-15   9.20e-17| 38 34 36 41 23|
+image 3: | 1.00e+00   1.21e-09   2.43e-10 |  3.82e-14   1.41e-16| 17 14 13  9 34|
+image 4: | 0.94   0.02  0.02  0.00  0.00 | 13 38 35  5 40|
+image 5: | 9.99e-01   4.80e-04   8.13e-06  | 5.55e-06   1.66e-06| 25 24 18 20 27|
+image 6: | 9.99e-01   1.86e-07   8.06e-08  | 4.06e-08   2.03e-08| 14  3  0 29  1|
+image 7: | 1.00e+00   5.89e-11   8.80e-12  | 2.38e-14   7.94e-15| 40  6  1 37 34|
+image 8: | 1.00e+00   3.44e-29   1.52e-31  | 3.74e-32   6.10e-33| 13 35  3 15 32|
+
+We can see from these plots that the model is totally sure of its prediction of all of these images. Even the image it classified incorrectly shows overwhelming certainty despite being slightly less certain than the other classifications., which it has some slight uncertainty. The corresponding images types can be seen in the figure under section 2.
+
+|0	|Speed limit (20km/h)|
+|1	|Speed limit (30km/h)|
+|2	|Speed limit (50km/h)|
+|3	|Speed limit (60km/h)|
+|4	|Speed limit (70km/h)|
+|5	|Speed limit (80km/h)|
+|6	|End of speed limit (80km/h)|
+|7	|Speed limit (100km/h)|
+|8	|Speed limit (120km/h)|
+|9	|No passing|
+|10	|No passing for vehicles over 3.5 metric tons|
+|11	|Right-of-way at the next intersection|
+|12	|Priority road|
+|13	|Yield|
+|14	|Stop|
+|15	|No vehicles|
+|16	|Vehicles over 3.5 metric tons prohibited|
+|17	|No entry|
+|18	|General caution|
+|19	|Dangerous curve to the left|
+|20	|Dangerous curve to the right|
+|21	|Double curve|
+|22	|Bumpy road|
+|23	|Slippery road|
+|24	|Road narrows on the right|
+|25	|Road work|
+|26	|Traffic signals|
+|27	|Pedestrians|
+|28	|Children crossing|
+|29	|Bicycles crossing|
+|30	|Beware of ice/snow|
+|31	|Wild animals crossing|
+|32	|End of all speed and passing limits|
+|33	|Turn right ahead|
+|34	|Turn left ahead|
+|35	|Ahead only|
+|36	|Go straight or right|
+|37	|Go straight or left|
+|38	|Keep right|
+|39	|Keep left|
+|40	|Roundabout mandatory|
+|41	|End of no passing|
+|42	|End of no passing by vehicles over 3.5 metric tons|
+
 
 
 
