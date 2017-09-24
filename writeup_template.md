@@ -161,7 +161,7 @@ This is an interesting result. The image is of a pedestrain sign, and the predic
 
 #### 3. Model certainty
 
-The following images show the top 5 softmax probabilities for classification of each of the downloaded images:
+The following plots show the top 5 softmax probabilities for classification of each of the downloaded images:
 
 ![alt text][image3] ![alt text][image4]
 ![alt text][image5] ![alt text][image6]
@@ -181,7 +181,7 @@ image 6: | 9.99e-01,   1.86e-07,   8.06e-08,   4.06e-08,   2.03e-08| 14,  3,  0,
 image 7: | 1.00e+00,   5.89e-11,   8.80e-12,   2.38e-14,   7.94e-15| 40,  6,  1,  37,  34|
 image 8: | 1.00e+00,   3.44e-29,   1.52e-31,   3.74e-32,   6.10e-33| 13,  35,  3,  15,  32|
 
-We can see from these plots that the model is totally sure of its prediction of all of these images. Even the image it classified incorrectly shows overwhelming certainty despite being slightly less certain than the other classifications. The corresponding images types can be seen in the table below.
+We can see from these plots that the model is totally sure of its prediction of all of these images. Even the image it classified incorrectly shows overwhelming certainty despite being slightly less certain than the other classifications. The corresponding image types can be seen in the table below.
 
 | Label         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
