@@ -1,5 +1,4 @@
-#**Traffic Sign Recognition** 
----
+# **Traffic Sign Recognition** 
 
 **Build a Traffic Sign Recognition Project**
 
@@ -34,12 +33,13 @@ The goals / steps of this project are the following:
 [image18]: ./report_images/TestExamples.png "out18"
 [image19]: ./report_images/TrainingExamples.png "out19"
 [image20]: ./report_images/ValidExamples.png "out20"
+---
 
 ## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
-###Contents
+### Contents
 This submission includes:
 The Traffic_Sign_Classifier.ipynb notebook file with all questions answered and all code cells executed and displaying output.
 A HTML export of the project notebook with the name report.html.
@@ -47,7 +47,7 @@ Additional images used for the project that are not from the German Traffic Sign
 This writeup report (markdown file)
 Here is a link to my [project code](https://github.com/LachlanNXT/CarND-Traffic-Sign-Classifier-Project)
 
-###Data Set Summary & Exploration
+### Data Set Summary & Exploration
 
 I used numpy to calculate summary statistics of the traffic
 signs data set:
@@ -58,7 +58,7 @@ signs data set:
 * Image data shape = (32, 32, 3)
 * Number of classes = 43
 
-####2. Exploratory visualization of the dataset.
+#### 2. Exploratory visualization of the dataset.
 
 The picture below from training set, has a corresponding label of 4, which means speed limit 70:
 ![alt text][image13]
@@ -68,9 +68,9 @@ The label matches the image so the data seems to have been imported correctly.
 
 We can see from the histograms above that the training, validation and test datasets have a similar distribution of image types.
 
-###Design and Test a Model Architecture
+### Design and Test a Model Architecture
 
-####1. Preprocessing the image data.
+#### 1. Preprocessing the image data.
 
 I wanted to normalise the data first, so I converted the data tupe from 'uint8' to 'int16' so the pixel values could be negative. Then I applied the pixel = (pixel - 128)/ 128 operation. The following plots show an example of the colour distribution in an image before and after normalisation:
 
