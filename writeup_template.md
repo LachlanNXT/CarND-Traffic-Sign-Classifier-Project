@@ -60,7 +60,9 @@ signs data set:
 #### 2. Exploratory visualization of the dataset.
 
 The picture below from training set, has a corresponding label of 4, which means speed limit 70:
+
 ![alt text][image13]
+
 The label matches the image so the data seems to have been imported correctly.
 
 ![alt text][image18] ![alt text][image19] ![alt text][image20]
@@ -80,6 +82,8 @@ I decided not to grayscale because colour is an important piece of information i
 I decided not to augment the dataset because the model seems to work fine without and due to time constraints.
 
 #### 2. Final model architecture
+
+I started with the LeNet Lab model and modified it. The resulting architecture is very similar, with an extra convolutional layer, more neurons per layer, and dropout on the first convolutional layer added.
 
 My final model consisted of the following layers:
 
@@ -102,77 +106,68 @@ My final model consisted of the following layers:
 | Fully connected		| input 120, output 84       									|
 | RELU					|												|
 | Fully connected		| input 84, output 43       									|
-| RELU					|												|
-| Softmax				| used for training        									|
+| RELU					|		output	LOGITS, prediction = argmax(LOGITS) 	|
+| Softmax				| used for training 							|
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### 3. Training
 
-To train the model, I used an ....
+I started with the default batch size, epochs, and other hyperparameters from the LeNet Lab. I also used the Adam Optimiser to start with. Varying the parameters, I found that the optimiser type, learning rate, and number of neurons/parameters had the biggest effect. I started by increasing the epochs until the accuracy flattened out. Then I tried changing the batch size, which seemed to have little effect. I increased the neurons per layer quite a bit, added dropout to counter overfitting due to the parameter increase, and added another convolutional layer since this dataset is more complicated than the original LeNet. These measures increased the accuracy a little. By far the biggest improvement came from changing to the Momentum Optimiser. I did this because the Adam Optimiser seemed to get to about 89% accuracy then bounce up and down from that value, indicating to me that the learning rate was too high or the optimiser was having trouble keeping the correct descent direction. After lowering the learning rate and learning that the Adam Optimiser implements learning rate decay, I tried the Momentum optimiser. I varied the learning rate and momentum parameter, and was able to achieve much faster learning and a validation accuracy of about 94%.
 
-####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+The final parameters were:
+* Momentum Optimiser, learning rate = 0.04, momentum = 0.6
+* Epochs = 15
+* Batch size = 128
+* Dropout = 0.5 on the first layer only during training
 
-My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+#### 4. Validation set accuracy
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+My final model results were: 
+* validation set accuracy of 94% 
+* test set accuracy of 93.7%
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+The agreement between accuracy on both validation and test sets indicates that there is very little over-fitting. The accuracy is over the requirement of 93% so it it quite accurate.
 
-###Test a Model on New Images
+### Test a Model on New Images
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+#### 1. German traffic signs found on the web
 
-Here are five German traffic signs that I found on the web:
+Here are nine German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image12]
 
-The first image might be difficult to classify because ...
+Images 2, 4, 5 and 7 are taken from photographs. The rest are reference images of the signs. The photographed images will be close to what the network was trained on, and should have an accuracy close to the test accuracy. The other images are very clear and should be even better. There is nothing particularly challenging about any of these images compared to the test/validation/training sets. The labels of these images are as below:
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+![alt text][image14]
+
+The images were preprocessed in the same way as the original dataset.
+
+#### 2. Predictions on these new traffic signs
 
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+Prediction:  [ 0  4 38 17 13 25 14 40 13]
+Label:       [0, 4, 38, 17, 27, 25, 14, 40, 13]
+Correct?     [ True  True  True  True False  True  True  True  True]
 
+The model was able to correctly guess 8 of the 9 traffic signs, which gives an accuracy of 89%. Given the small size of this extra dataset, this is withing statistical error of the test accuracy. However, when we examine the incorrect classification further, we find as in the image below:
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+![alt text][image15]
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+This is an interesting result. The image is of a pedestrain sign, and the prediction is for a yield sign. However, an example of a pedestrian sign from the test set looks different to this image. Further investigation on [wikipedia](https://en.wikipedia.org/wiki/Road_signs_in_Germany) reveals this sign is a version of an informative sign, and the test sign is a regulatory sign. So I have asked the network to classify a type of sign it does not know about, so a wrong answer is expected! Disregarding this results, the network scored 100%, although without any particularly challenging images.
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+#### 3. Model certainty
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+The following images show the top 5 softmax probabilities for classification of each of the downloaded images:
 
+![alt text][image3] ![alt text][image4]
+![alt text][image5] ![alt text][image6]
+![alt text][image7] ![alt text][image8]
+![alt text][image9] ![alt text][image10]
+![alt text][image11]
 
-For the second image ... 
+We can see from these plots that the model is totally sure of its prediction of all of these images. Even the image it classified incorrectly shows overwhelming certainty despite being slightly less certain than the other classifications., which it has some slight uncertainty. The corresponding sign types can be seen in the figure under section 2.
 
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
 
