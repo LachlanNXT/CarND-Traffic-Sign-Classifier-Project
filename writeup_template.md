@@ -40,10 +40,11 @@ Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/4
 
 ### Contents
 This submission includes:
-The Traffic_Sign_Classifier.ipynb notebook file with all questions answered and all code cells executed and displaying output.
-A HTML export of the project notebook with the name report.html.
-Additional images used for the project that are not from the German Traffic Sign Dataset. Found in /data/Ready/
-This writeup report (markdown file)
+*The Traffic_Sign_Classifier.ipynb notebook file with all questions answered and all code cells executed and displaying output.
+*A HTML export of the project notebook with the name report.html.
+*Additional images used for the project that are not from the German Traffic Sign Dataset. Found in /data/Ready/
+*This writeup report (markdown file)
+
 Here is a link to my [project code](https://github.com/LachlanNXT/CarND-Traffic-Sign-Classifier-Project)
 
 ### Data Set Summary & Exploration
@@ -146,7 +147,9 @@ The images were preprocessed in the same way as the original dataset.
 Here are the results of the prediction:
 
 Prediction:  [ 0  4 38 17 13 25 14 40 13]
+
 Label:       [0, 4, 38, 17, 27, 25, 14, 40, 13]
+
 Correct?     [ True  True  True  True False  True  True  True  True]
 
 The model was able to correctly guess 8 of the 9 traffic signs, which gives an accuracy of 89%. Given the small size of this extra dataset, this is withing statistical error of the test accuracy. However, when we examine the incorrect classification further, we find as in the image below:
